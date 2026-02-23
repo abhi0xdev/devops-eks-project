@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: service
+metadata: 
+  name: app-svc
+spec:
+  selector:
+    app: devops
+  ports:
+    - port: 80
+      targetport: 5000
+  type: LoadBalancer

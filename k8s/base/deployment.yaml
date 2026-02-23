@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops
+  template:
+    metadata:
+      labels:
+        app: devops
+    spec:
+      serviceAccountName: app-sa
+      containers:
+        - name: app
+          image: REPLACE_WITH_ECR_IMAGE
+          ports:
+            - containerPort: 5000
+          env:
+            - name: ENV
+              value: "dev"
